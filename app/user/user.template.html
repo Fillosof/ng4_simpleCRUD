@@ -1,0 +1,102 @@
+<div class="container">
+    <div class="col-md-12">
+      <div class="row row-eq-height">
+          <div class="col-md-11">
+              <h1>User List</h1> 
+            </div>
+            <div class="col-md-1 ">
+                <button class="btn btn-success pull-right align-bottom"
+                (click)="showAddUserForm()">
+                <i class="fa fa-plus"></i></button>
+                <button class="btn btn-primary pull-right align-bottom"
+                (click)="getJSON()">
+                <i class="fa fa-refresh"></i></button>
+            </div>   
+            
+      </div>
+
+      <table class="table table-bordered table-striped table-hover">
+      <thead>
+
+        <tr>
+          <th class="text-center">ID</th>
+          <th class="text-center">Name</th>
+          <th class="text-center">Username</th>
+          <th class="text-center">Email</th>
+          <th class="text-center">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button class="btn btn-info"
+                          (click)="showEditUserForm(user)">
+                         <i class="fa fa-edit"></i>
+                </button>
+            <button class="btn btn-danger"
+                    (click)="removeUser(user)">
+                        <i class="fa fa-minus"></i>
+              </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+
+  
+    <form *ngIf='newUserForm'>
+      <h2>Add new User</h2>
+      <p>ID: <input type="text"
+                    name="id"
+                    [(ngModel)]="newUser.id" /></p>
+      <p>Name: <input type="text"
+                      name="name"
+                      [(ngModel)]="newUser.name" /></p>
+      <p>Username: <input type="text"
+                          name="username"
+                          [(ngModel)]="newUser.username" /></p>
+      <p>Email: <input type="text"
+                        name="email"
+                        [(ngModel)]="newUser.email" /></p>
+      <p>
+        <button type="button"
+                class="btn btn-primary" 
+                (click)="saveUser(newUser)" >Submit</button>
+        <button type="button"
+                class="btn btn-warning"
+                (click)="cancelNewUser()" >Cancel</button>
+      </p>
+     </form>
+
+     <form *ngIf='editUserForm'>
+      <h2>Edit User Data</h2>
+      <p>ID: <input type="text"
+                    name="id"
+                    [(ngModel)]="editedUser.id" /></p>
+      <p>Name: <input type="text"
+                      name="name"
+                      [(ngModel)]="editedUser.name" /></p>
+      <p>Username: <input type="text"
+                          name="username"
+                          [(ngModel)]="editedUser.username" /></p>
+      <p>Email: <input type="text"
+                        name="email"
+                        [(ngModel)]="editedUser.email" /></p>
+      <p>
+        <button type="button"
+                class="btn btn-primary" 
+                (click)="updateUser()" >Submit</button>
+        <button type="button"
+                (click)="cancelEdits()"
+                class="btn btn-warning">Cancel</button>
+      </p>
+     </form>
+
+
+    </div>
+  </div>
+  
