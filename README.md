@@ -1,4 +1,4 @@
-## Just simple test CRUD APP
+## Just simple test CRUD APP on Angular 4
 
 ### Running the Project
 1) Open a command prompt in the project's root directory
